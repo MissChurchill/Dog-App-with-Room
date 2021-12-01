@@ -23,6 +23,8 @@ interface DogPhotoApiService {
     @GET("breeds/image/random")
     suspend fun getRandomPhoto(): DogPhoto
 
+    //fun getOldPhoto(): DogPhoto?
+
 }
 
 object DogPhotoApi {
