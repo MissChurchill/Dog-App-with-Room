@@ -1,9 +1,10 @@
-package com.example.viewmodels
+package com.example.doggone.viewmodels
 
 import androidx.lifecycle.*
+import com.example.doggone.database.DogImageEntity
 import com.example.doggone.network.DogPhoto
 import com.example.doggone.network.DogPhotoApi
-import com.example.doggone.network.DogPhotoDao
+import com.example.doggone.database.DogPhotoDao
 import kotlinx.coroutines.launch
 
 class DogViewModel(private val dogPhotoDao: DogPhotoDao) : ViewModel() {
@@ -21,28 +22,26 @@ class DogViewModel(private val dogPhotoDao: DogPhotoDao) : ViewModel() {
 
         }
     }
-
-    fun addDogImage(dogPhoto: DogPhoto) {
+    fun addDog(dogImageEntity: DogImageEntity) {
         viewModelScope.launch {
-            dogPhotoDao.addDogImage(dogPhoto)
+            dogPhotoDao.addDogImage(dogImageEntity)
 
         }
     }
     fun deleteMostRecentDog(){
         viewModelScope.launch {
-        val previousImage =dogPhotoDao.getMostRecentlyAddDog()
             dogPhotoDao.deleteDog()
         }
     }
-    fun getAllDogs(): LiveData<List<DogPhoto>>
+    fun getAllDogs(): LiveData<List<DogImageEntity>>
     {
        return dogPhotoDao.getAllDogImages().asLiveData()
     }
-
     }
 
 class DogPhotoViewModelFactory(
-        private val dogPhotoDao: DogPhotoDao) : ViewModelProvider.Factory {
+        private val dogPhotoDao: DogPhotoDao
+) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(DogViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")

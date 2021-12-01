@@ -3,4 +3,6 @@
     <string name="woof_woof">Woof, Woof</string>
     <string name="todo">TODO</string>
     <string name="previous">PREVIOUS</string>
+    <string name="current">Current...</string>
+    <string name="previous_image">previous image</string>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.viewmodels.MainActivity">
+    tools:context="com.viewmodels.MainActivity">
 
     <Button
         android:id="@+id/previous"
@@ -45,13 +45,5 @@
         tools:srcCompat="@tools:sample/avatars"
         android:contentDescription="@string/todo" />
 
-    <Button
-        android:id="@+id/favorite"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/ic_baseline_favorite_shadow_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
