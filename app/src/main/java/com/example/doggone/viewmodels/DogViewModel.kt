@@ -28,16 +28,19 @@ class DogViewModel(private val dogPhotoDao: DogPhotoDao) : ViewModel() {
 
         }
     }
-    fun deleteMostRecentDog(){
+    /*fun deleteMostRecentDog(){
         viewModelScope.launch {
+            val mostRecentlyAddedDog = dogPhotoDao.getMostRecentlyAddedDog()
             dogPhotoDao.deleteDog()
         }
-    }
-    fun getAllDogs(): LiveData<List<DogImageEntity>>
-    {
+    }*/
+
+
+    fun getAllDogs(): LiveData<List<DogImageEntity>> {
        return dogPhotoDao.getAllDogImages().asLiveData()
     }
     }
+
 
 class DogPhotoViewModelFactory(
         private val dogPhotoDao: DogPhotoDao

@@ -21,25 +21,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val changeDogButton: Button = findViewById(R.id.button)
+        val prevDogButton :Button = findViewById(R.id.previous)
+
         viewModel.dogPhoto.observe(this, {
             val mainImage : ImageView = findViewById(R.id.imageView)
             Picasso.with(this).load(it.imgUrl).into(mainImage)
         })
 
 
-        findViewById<Button>(R.id.button).setOnClickListener {
+        changeDogButton.setOnClickListener {
             val currentImgUrl = viewModel.dogPhoto.value?.imgUrl
-            val newDogImage = currentImgUrl?.let { it1 -> DogImageEntity(imageUrl = it1) }
             viewModel.getNewPhoto()
+            val newDogImage = currentImgUrl?.let { it1 -> DogImageEntity(imageUrl = it1) }
             if (newDogImage != null) {
                 viewModel.addDog(newDogImage)
             }
-
-            viewModel.deleteMostRecentDog()
         }
-        findViewById<Button>(R.id.previous).setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            startActivity(intent)
+            prevDogButton.setOnClickListener {
+                val intent = Intent(this, MainActivity2::class.java)
+                startActivity(intent)
+
+
         }
     }
 }
