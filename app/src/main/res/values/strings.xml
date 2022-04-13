@@ -5,4 +5,5 @@
     <string name="previous">PREVIOUS</string>
     <string name="current">Current...</string>
     <string name="previous_image">previous image</string>
+    <string name="return_to_home">Return to Home</string>
 </resources>
